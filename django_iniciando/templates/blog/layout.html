@@ -8,7 +8,12 @@
 </head>
 <body>
 <h1>Blog - {{ name }}</h1>
-
+{% load gravatar %}
+{% if request.user.is_authenticated %}
+<p>
+    Username: {{ request.user.username }} <img src="{% gravatar_url request.user.email 25 %}" alt="gravatar">
+</p>
+{% endif %}
 <div class="container">
     <div class="col-md-3">
         <aside class="row">
